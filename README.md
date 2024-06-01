@@ -26,10 +26,6 @@ This project is a simple Random Password Generator web application. It allows us
     ```
 3. Open `index.html` in your browser to use the application.
 
-## Screenshot
-
-![image](https://github.com/NobleRex/Random-Password-Generator/assets/114880936/20797218-4c2a-4b1e-af63-c2cc9c606e5d)
-
 
 ## Contributions
 
