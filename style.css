@@ -41,10 +41,9 @@ body {
   text-shadow: 0 0 10px #00ff9d;
 }
 
+/* Removed underline */
 .container h1 span {
   color: #00ff9d;
-  border-bottom: 4px solid #00ff9d;
-  padding-bottom: 7px;
 }
 
 /* Password display styles */
@@ -133,8 +132,13 @@ body {
   padding: 16px 26px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.1s ease;
   box-shadow: 0 0 10px #00ff9d;
+}
+
+.container button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 15px #00e68a;
 }
 
 .container button:hover {
@@ -145,4 +149,23 @@ body {
   width: 28px;
   margin-right: 10px;
   filter: invert(1);
+}
+
+/* Button Flex styles */
+.button-flex {
+  display: flex;
+  justify-content: center;
+}
+
+/* Highlight button on click */
+.container button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 15px #00ff9d;
+}
+
+/* Update copy image color */
+.display img {
+  width: 30px;
+  cursor: pointer;
+  filter: invert(0.6) sepia(1) hue-rotate(90deg) saturate(5);
 }
