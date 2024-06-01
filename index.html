@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Password Generator</title>
     <link rel="stylesheet" href="style.css">
@@ -12,6 +13,8 @@
         <input type="text" id="password" placeholder="Password">
         <img src="images/copy.png" onclick="copyPassword()" alt="Copy">
     </div>
+    <label for="lengthRange">Password Length: <span id="lengthValue">12</span></label>
+    <input type="range" id="lengthRange" min="7" max="20" value="12" oninput="updateLength()">
     <button onclick="createPassword()">
         <img src="images/generate.png" alt="Generate">Generate Password
     </button>
@@ -19,29 +22,35 @@
 
 <script>
     const passwordBox = document.getElementById("password"); 
-    const length = 12; // Corrected typo
+    const lengthRange = document.getElementById("lengthRange");
+    const lengthValue = document.getElementById("lengthValue");
 
     const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lowerCase = "abcdefghijklmnopqrstuvwxyz";
     const number = "0123456789";
     const symbol = "@#$%^&*()_+></}{[]-=|~";
-
     const allChars = upperCase + lowerCase + number + symbol;
 
-    function createPassword(){
+    function updateLength() {
+        lengthValue.textContent = lengthRange.value;
+        createPassword();
+    }
+
+    function createPassword() {
+        const length = lengthRange.value;
         let password = "";
         password += upperCase[Math.floor(Math.random() * upperCase.length)];
         password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
         password += number[Math.floor(Math.random() * number.length)];
         password += symbol[Math.floor(Math.random() * symbol.length)];
 
-        while(length > password.length){
+        while (length > password.length) {
             password += allChars[Math.floor(Math.random() * allChars.length)];
         }
         passwordBox.value = password;
     }    
 
-    function copyPassword(){
+    function copyPassword() {
         passwordBox.select();
         document.execCommand("copy");
         alert("Password copied to clipboard!");
